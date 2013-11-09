@@ -399,8 +399,7 @@ static void motion(const int x, const int y) {
 	if (g_mouseClickDown) {		
 		if(g_arcBallPos == AB_Sky) {
 			if(g_skyWorld == 0 && g_mouseLClickButton && !g_mouseRClickButton) m = inv(m); // invert only ego rotation
-			if(g_skyWorld == 1 && (g_mouseRClickButton)) m = inv(m); // else invert back;
-			if(g_skyWorld == 1 && ((g_mouseLClickButton && g_mouseRClickButton) || g_mouseMClickButton)) m = inv(m);
+			else if(g_skyWorld == 1 && (g_mouseRClickButton)) m = inv(m); // else invert back;
 			RigTForm wrt = g_skyWorld == 0 ? g_eyeNode->getRbt() : g_world->getRbt();
 			m = g_mouseLClickButton && g_mouseRClickButton ? inv(m) : m;
 			RigTForm A = transFact(wrt) * linFact(g_eyeNode->getRbt());
